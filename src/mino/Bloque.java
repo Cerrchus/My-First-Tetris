@@ -1,4 +1,4 @@
-package TT;
+package mino;
 
 import java.awt.Color;
 import java.awt.Graphics2D;

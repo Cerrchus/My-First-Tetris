@@ -1,4 +1,4 @@
-package TT;
+package mino;
 
 public class FigL2 {
 

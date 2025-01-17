@@ -1,5 +1,7 @@
 package main;
 
+import java.awt.Graphics2D;
+
 public class PlayManager {
 
 	// Dimensiones
@@ -17,10 +19,14 @@ public class PlayManager {
 		bottom_y = top_y + HEIGHT;
 		
 	}
-	
+
 	public void update() {
 		
 	}
 	
-	public void draw()
+	public void draw(Graphics2D g2) {
+		
+	}
 }
+
+
