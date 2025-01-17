@@ -12,7 +12,7 @@ public class Main {
 		// Añadimos el JPanel a la ventana principal
 		GamePanel gp = new GamePanel();
 		window.add(gp);
-		window.pack(); // Con este metodo el tamaño del GamePanel es el tamaño del JFrame
+		window.pack(); // Con este metodo el tamaño del GamePanel es el tamaño del JFrame	
 		
 		window.setLocationRelativeTo(null);
 		window.setVisible(true);
