@@ -3,6 +3,8 @@ package mino;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
+import javax.swing.plaf.basic.BasicComboBoxUI.KeyHandler;
+
 import main.PlayManager;
 
 public class Mino {
@@ -25,6 +27,12 @@ public class Mino {
 	public void setXY(int x, int y) {}
 	public void updateXY(int direction) {}
 	public void update() {
+		
+		//Movement
+		if(KeyHandler.downPressed) {
+			
+		}
+		
 		autoDropCounter++; //sube con cada frame
 		if(autoDropCounter == PlayManager.dropInterval) {
 			//mino va por abajo
