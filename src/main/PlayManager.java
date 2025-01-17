@@ -16,6 +16,9 @@ public class PlayManager {
 	public static int top_y;
 	public  static int bottom_y;
 	
+	//Others
+	public static int dropInterval = 60;
+	
 	public PlayManager() {
 		left_x = (GamePanel.WIDTH/2) - (WIDTH/2);
 		right_x = left_x + WIDTH;

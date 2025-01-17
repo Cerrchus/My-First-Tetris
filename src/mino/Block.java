@@ -4,13 +4,13 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
-public class Bloque extends Rectangle {
+public class Block extends Rectangle {
 	
 	public int y, x;
 	public static final int SIZE = 30;
 	public Color c;
 	
-	public Bloque(Color c) {
+	public Block(Color c) {
 		this.c = c;
 	}
 	
