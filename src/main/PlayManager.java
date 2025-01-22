@@ -6,6 +6,10 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
+import mino.Block;
+import mino.Mino;
+import mino.Mino_L1;
+
 public class PlayManager {
 
 	// Dimensiones
@@ -16,7 +20,10 @@ public class PlayManager {
 	public static int top_y;
 	public  static int bottom_y;
 	
-	//Others
+	Mino currentMino;
+	final int MINO_START_X;
+	final int MINO_START_Y;
+	
 	public static int dropInterval = 60;
 	
 	public PlayManager() {
@@ -25,10 +32,18 @@ public class PlayManager {
 		top_y = 50;
 		bottom_y = top_y + HEIGHT;
 		
+		MINO_START_X = left_x + (WIDTH/2) - Block.SIZE;
+		MINO_START_Y = top_y + Block.SIZE;
+		
+		currentMino = new Mino_L1();
+		currentMino.setXY(MINO_START_X, MINO_START_Y);
+		
+		
+		
 	}
 
 	public void update() {
-		
+		currentMino.update();
 	}
 	
 	public void draw(Graphics2D g2) {

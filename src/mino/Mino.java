@@ -3,15 +3,15 @@ package mino;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-import javax.swing.plaf.basic.BasicComboBoxUI.KeyHandler;
-
 import main.PlayManager;
+import main.KeyHandler;
 
 public class Mino {
 	
 	public Block b[] = new Block[4];
 	public Block tempB[] = new Block[4];
 	int autoDropCounter = 0;
+	public int direction = 1; // Hay 4 direcciones (1, 2, 3 y 4)
 	
 	public void create(Color c) {
 	    b[0] = new Block(c);
@@ -25,6 +25,7 @@ public class Mino {
 	}
 
 	public void setXY(int x, int y) {}
+<<<<<<< HEAD
 	public void updateXY(int direction) {
 		
 		this.direction = direction;
@@ -54,6 +55,24 @@ public class Mino {
 			KeyHandler.upPressed = false;
 		}
 		if(KeyHandler.downPressed) {
+=======
+	public void updateXY(int direction) {}
+	public void getDirection1() {
+		
+	}
+	public void getDirection2() {
+			
+		}
+	public void getDirection3() {
+		
+	}
+	public void getDirection4() {
+		
+	}
+	public void update() {
+		
+		if(KeyHandler.upPressed) {
+>>>>>>> f011dad792e241e754cad5fd27f6a48413197e36
 			
 			b[0].y += Block.SIZE;
 			b[1].y += Block.SIZE;
@@ -61,6 +80,33 @@ public class Mino {
 			b[3].y += Block.SIZE;
 		    autoDropCounter = 0;  //AL DESPLAZARSE HACIA ABAJO SE REINICIA EL AUTODROP
 		    KeyHandler.downPressed = false;
+		}
+		if(KeyHandler.downPressed) {
+			b[0].y += Block.SIZE;
+			b[1].y += Block.SIZE;
+			b[2].y += Block.SIZE;
+			b[3].y += Block.SIZE;
+			autoDropCounter = 0;
+			
+			KeyHandler.downPressed = false;
+		}
+		if(KeyHandler.leftPressed) {
+			b[0].y += Block.SIZE;
+			b[1].y += Block.SIZE;
+			b[2].y += Block.SIZE;
+			b[3].y += Block.SIZE;
+			autoDropCounter = 0;
+			
+			KeyHandler.leftPressed = false;
+		}
+		if(KeyHandler.rightPressed) {
+			b[0].y += Block.SIZE;
+			b[1].y += Block.SIZE;
+			b[2].y += Block.SIZE;
+			b[3].y += Block.SIZE;
+			autoDropCounter = 0;
+			
+			KeyHandler.rightPressed = false;
 		}
 		
 		autoDropCounter++; //sube con cada frame
