@@ -169,7 +169,9 @@ public class Mino {
 	}
 
 	public void draw(Graphics2D g2) {
-		
+        for (Block block : b) {
+            block.dibujo(g2);
+        }
 	}
 
 }
