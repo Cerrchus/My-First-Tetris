@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
+import javax.swing.plaf.basic.BasicComboBoxUI.KeyHandler;
 
 public class GamePanel extends JPanel implements Runnable{
 
@@ -22,13 +23,13 @@ public class GamePanel extends JPanel implements Runnable{
 		this.setBackground(Color.BLACK);
 		this.setLayout(null);
 		
-<<<<<<< HEAD
+		
 		//implements KeyListener
 		this.addKeyListener(new KeyHandler());
 		this.setFocusable(isFocusable());
-=======
+		
+		
 		pm = new PlayManager();
->>>>>>> 3438a515f08b2f43b6ea17792280c5d94d2ff3cc
 		
 	}
 	

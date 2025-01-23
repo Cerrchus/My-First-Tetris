@@ -2,10 +2,10 @@ package mino;
 
 import java.awt.Color;
 
-public class FigL1 extends Mino {
+public class Mino_L1 extends Mino {
 
 	
-    public FigL1() {
+    public Mino_L1() {
         create(Color.orange);
     }
 
