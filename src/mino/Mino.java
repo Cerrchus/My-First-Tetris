@@ -15,8 +15,6 @@ public class Mino {
 	boolean leftCollision, rightCollision, bottomCollision;
 	
 	// 4 directions
-	public int direction = 1;
-	
 	public void create(Color c) {
 	    b[0] = new Block(c);
 	    b[1] = new Block(c);
@@ -29,44 +27,7 @@ public class Mino {
 	}
 
 	public void setXY(int x, int y) {}
-<<<<<<< HEAD
-	public void updateXY(int direction) {}
-	//these are empty because they are overriden in each mino class
-	public void getDirection1() {}
-	public void getDirection2() {}
-	public void getDirection3() {}
-	public void getDirection4() {}
-	public void update() {
-		
-		//Movement
-		if(KeyHandler.downPressed) {
-			b[0].y += Block.SIZE;
-			b[1].y += Block.SIZE;
-			b[2].y += Block.SIZE;
-			b[3].y += Block.SIZE;
-			
-			//when moved down, reset the autoDropCounter
-			autoDropCounter = 0;
-			
-			KeyHandler.downPressed = false;
-		}
-		if(KeyHandler.upPressed) {
-			
-		}
-		if(KeyHandler.leftPressed) {
-			b[0].x -= Block.SIZE;
-			b[1].x -= Block.SIZE;
-			b[2].x -= Block.SIZE;
-			b[3].x -= Block.SIZE;
-			KeyHandler.leftPressed = false;
-		}
-		if(KeyHandler.rightPressed) {
-			b[0].x -= Block.SIZE;
-			b[1].x -= Block.SIZE;
-			b[2].x -= Block.SIZE;
-			b[3].x -= Block.SIZE;
-			KeyHandler.leftPressed = false;
-=======
+
 	public void updateXY(int direction) {
 		
 		checkRotationCollision();
@@ -193,7 +154,6 @@ public class Mino {
 			}
 			
 			KeyHandler.rightPressed = false;
->>>>>>> a3a456e1f287bc4dc594aba77beb599b2c2be7c8
 		}
 		
 		autoDropCounter++; //sube con cada frame

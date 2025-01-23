@@ -1,9 +1,6 @@
 package mino;
 
-<<<<<<< HEAD
-public class Mino_L2 {
 
-=======
 import java.awt.Color;
 
 public class Mino_L2 extends Mino {
@@ -86,5 +83,4 @@ public class Mino_L2 extends Mino {
     	
     	updateXY(4); 
     }
->>>>>>> a3a456e1f287bc4dc594aba77beb599b2c2be7c8
 }
