@@ -22,6 +22,7 @@ public class GamePanel extends JPanel implements Runnable{
 		this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		this.setBackground(Color.BLACK);
 		this.setLayout(null);
+<<<<<<< HEAD
 		
 		
 		//implements KeyListener
@@ -30,6 +31,15 @@ public class GamePanel extends JPanel implements Runnable{
 		
 		
 		pm = new PlayManager();
+=======
+
+		//implements KeyListener
+		this.addKeyListener(new KeyHandler());
+		this.setFocusable(true);
+
+		pm = new PlayManager();
+
+>>>>>>> a3a456e1f287bc4dc594aba77beb599b2c2be7c8
 		
 	}
 	
@@ -41,7 +51,7 @@ public class GamePanel extends JPanel implements Runnable{
 	
 	@Override
 	public void run() {
-		 // Game Loop
+		// Game Loop
 		double drawInterval = 1000000000/FPS;
 		double delta = 0;
 		long lastTime = System.nanoTime();
@@ -61,7 +71,9 @@ public class GamePanel extends JPanel implements Runnable{
 	}
 	
 	private void update() {
-		pm.update();
+		if(KeyHandler.pausePressed == false) {
+			pm.update();
+		}
 	}
 	
 	public void paintComponent(Graphics g) {
