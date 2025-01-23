@@ -28,15 +28,20 @@ public class Mino {
 	public void setXY(int x, int y) {}
 	public void updateXY(int direction) {
 		
-		this.direction = direction;
-		tempB[0].x = b[0].x;
-    	tempB[0].y = b[0].y;
-    	tempB[1].x = b[1].x;
-    	tempB[1].y = b[1].y;
-    	tempB[2].x = b[2].x;
-    	tempB[2].y = b[2].y;
-    	tempB[3].x = b[3].x;
-    	tempB[3].y = b[3].y;
+		checkRotationCollision();
+		
+		if(leftCollision == false && rightCollision == false && bottomCollision == false) {
+			this.direction = direction;
+			tempB[0].x = b[0].x;
+	    	tempB[0].y = b[0].y;
+	    	tempB[1].x = b[1].x;
+	    	tempB[1].y = b[1].y;
+	    	tempB[2].x = b[2].x;
+	    	tempB[2].y = b[2].y;
+	    	tempB[3].x = b[3].x;
+	    	tempB[3].y = b[3].y;
+		}
+		
 	}
 	public void getDirection1() {}
 	public void getDirection2() {}
@@ -70,7 +75,33 @@ public class Mino {
 			}
 		}
 	}
-	public void checkRotationCollision() {}
+	public void checkRotationCollision() {
+		leftCollision = false;
+		rightCollision = false;
+		bottomCollision = false;
+		
+		// Comprobamos el choque con el frame
+		// Pared izquierda
+		for(int i = 0; i < b.length; i++) {
+			if(tempB[i].x == PlayManager.left_x) {
+				leftCollision = true;
+			}
+		}
+		
+		// Pared derecha
+		for(int i = 0; i < b.length; i++) {
+			if(tempB[i].x + Block.SIZE == PlayManager.right_x) {
+				rightCollision = true;
+			}
+		}
+		
+		// Pared abajo
+		for(int i = 0; i < b.length; i++) {
+			if(tempB[i].y + Block.SIZE == PlayManager.bottom_y) {
+				bottomCollision = true;
+			}
+		}
+	}
 	public void update() {
 
 		
