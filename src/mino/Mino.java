@@ -12,6 +12,7 @@ public class Mino {
 	public Block tempB[] = new Block[4];
 	int autoDropCounter = 0;
 	public int direction = 1; // Hay 4 direcciones (1, 2, 3 y 4)
+	boolean leftCollision, rightCollision, bottomCollision;
 	
 	public void create(Color c) {
 	    b[0] = new Block(c);
@@ -41,6 +42,35 @@ public class Mino {
 	public void getDirection2() {}
 	public void getDirection3() {}
 	public void getDirection4() {}
+	public void checkMovementCollision() {
+		
+		leftCollision = false;
+		rightCollision = false;
+		bottomCollision = false;
+		
+		// Comprobamos el choque con el frame
+		// Pared izquierda
+		for(int i = 0; i < b.length; i++) {
+			if(b[i].x == PlayManager.left_x) {
+				leftCollision = true;
+			}
+		}
+		
+		// Pared derecha
+		for(int i = 0; i < b.length; i++) {
+			if(b[i].x + Block.SIZE == PlayManager.right_x) {
+				rightCollision = true;
+			}
+		}
+		
+		// Pared abajo
+		for(int i = 0; i < b.length; i++) {
+			if(b[i].y + Block.SIZE == PlayManager.bottom_y) {
+				bottomCollision = true;
+			}
+		}
+	}
+	public void checkRotationCollision() {}
 	public void update() {
 
 		
@@ -54,30 +84,41 @@ public class Mino {
 			}
 			KeyHandler.upPressed = false;
 		}
+		
+		checkMovementCollision();
+		
+		// Mover el mino
 		if(KeyHandler.downPressed) {
-			b[0].y += Block.SIZE;
-			b[1].y += Block.SIZE;
-			b[2].y += Block.SIZE;
-			b[3].y += Block.SIZE;
-			autoDropCounter = 0;
+			// Si el mino no toca por abajo, puede ir hacia abajo
+			if(bottomCollision == false) {
+				b[0].y += Block.SIZE;
+				b[1].y += Block.SIZE;
+				b[2].y += Block.SIZE;
+				b[3].y += Block.SIZE;
+				
+				// Cuando se mueve hacia abajo, se actualiza el autodrop
+				autoDropCounter = 0;
+			}
 			
 			KeyHandler.downPressed = false;
 		}
 		if(KeyHandler.leftPressed) {
-			b[0].y += Block.SIZE;
-			b[1].y += Block.SIZE;
-			b[2].y += Block.SIZE;
-			b[3].y += Block.SIZE;
-			autoDropCounter = 0;
+			if(leftCollision == false) {
+				b[0].x += Block.SIZE;
+				b[1].x += Block.SIZE;
+				b[2].x += Block.SIZE;
+				b[3].x += Block.SIZE;
+			}
 			
 			KeyHandler.leftPressed = false;
 		}
 		if(KeyHandler.rightPressed) {
-			b[0].y += Block.SIZE;
-			b[1].y += Block.SIZE;
-			b[2].y += Block.SIZE;
-			b[3].y += Block.SIZE;
-			autoDropCounter = 0;
+			if(rightCollision == false) {
+				b[0].x += Block.SIZE;
+				b[1].x += Block.SIZE;
+				b[2].x += Block.SIZE;
+				b[3].x += Block.SIZE;
+			}
 			
 			KeyHandler.rightPressed = false;
 		}
