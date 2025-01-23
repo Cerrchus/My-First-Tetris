@@ -70,7 +70,7 @@ public class Mino {
 			}
 		}
 		
-		// Pared abajo
+		// suelo
 		for(int i = 0; i < b.length; i++) {
 			if(b[i].y + Block.SIZE == PlayManager.bottom_y) {
 				bottomCollision = true;
