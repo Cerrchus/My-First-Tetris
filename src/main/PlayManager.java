@@ -85,7 +85,7 @@ public class PlayManager {
 	
 	public void draw(Graphics2D g2) {
 		// Dibuja el rectangulo donde se juega
-		g2.setColor(Color.white);
+		g2.setColor(Color.orange);
 		g2.setStroke(new BasicStroke(4f));
 		g2.drawRect(left_x-4, top_y-4, WIDTH+8, HEIGHT+8);
 		
