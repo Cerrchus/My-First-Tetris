@@ -20,3 +20,5 @@ public class Block extends Rectangle {
 	}
 
 }
+
+// we gotta add a margin between blocks

@@ -7,6 +7,7 @@ public class Mino_Square extends Mino {
 		create(Color.yellow);
 	}
 	
+	//TODO: the square is missing a mino
 	public void setXY(int x, int y) {
 		// ○ ○  
         // ○ ○ 
@@ -19,6 +20,7 @@ public class Mino_Square extends Mino {
         b[2].y = b[0].y;
         b[3].x = b[0].x + Block.SIZE;
         b[3].y = b[0].y + Block.SIZE;
+       
 	}
 	
 	public void getDirection1() {}

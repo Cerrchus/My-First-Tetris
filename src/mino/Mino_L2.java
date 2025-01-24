@@ -1,5 +1,6 @@
 package mino;
 
+
 import java.awt.Color;
 
 public class Mino_L2 extends Mino {
