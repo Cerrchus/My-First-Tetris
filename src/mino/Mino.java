@@ -13,6 +13,7 @@ public class Mino {
 	int autoDropCounter = 0;
 	public int direction = 1; // Hay 4 direcciones (1, 2, 3 y 4)
 	boolean leftCollision, rightCollision, bottomCollision;
+	public boolean active = true;
 	
 	// 4 directions
 	public void create(Color c) {
@@ -34,14 +35,14 @@ public class Mino {
 		
 		if(leftCollision == false && rightCollision == false && bottomCollision == false) {
 			this.direction = direction;
-			tempB[0].x = b[0].x;
-	    	tempB[0].y = b[0].y;
-	    	tempB[1].x = b[1].x;
-	    	tempB[1].y = b[1].y;
-	    	tempB[2].x = b[2].x;
-	    	tempB[2].y = b[2].y;
-	    	tempB[3].x = b[3].x;
-	    	tempB[3].y = b[3].y;
+			b[0].x = tempB[0].x;
+	    	b[0].y = tempB[0].y;
+	    	b[1].x = tempB[1].x;
+	    	b[1].y = tempB[1].y;
+	    	b[2].x = tempB[2].x;
+	    	b[2].y = tempB[2].y;
+	    	b[3].x = tempB[3].x;
+	    	b[3].y = tempB[3].y;
 		}
 		
 	}
@@ -49,6 +50,8 @@ public class Mino {
 	public void getDirection2() {}
 	public void getDirection3() {}
 	public void getDirection4() {}
+	
+	
 	public void checkMovementCollision() {
 		
 		leftCollision = false;
@@ -85,21 +88,21 @@ public class Mino {
 		// Comprobamos el choque con el frame
 		// Pared izquierda
 		for(int i = 0; i < b.length; i++) {
-			if(tempB[i].x == PlayManager.left_x) {
+			if(tempB[i].x < PlayManager.left_x) {
 				leftCollision = true;
 			}
 		}
 		
 		// Pared derecha
 		for(int i = 0; i < b.length; i++) {
-			if(tempB[i].x + Block.SIZE == PlayManager.right_x) {
+			if(tempB[i].x + Block.SIZE > PlayManager.right_x) {
 				rightCollision = true;
 			}
 		}
 		
 		// Pared abajo
 		for(int i = 0; i < b.length; i++) {
-			if(tempB[i].y + Block.SIZE == PlayManager.bottom_y) {
+			if(tempB[i].y + Block.SIZE > PlayManager.bottom_y) {
 				bottomCollision = true;
 			}
 		}
@@ -155,23 +158,30 @@ public class Mino {
 			
 			KeyHandler.rightPressed = false;
 		}
-		
-		autoDropCounter++; //sube con cada frame
-		if(autoDropCounter == PlayManager.dropInterval) {
-			//mino va por abajo
-			b[0].y += Block.SIZE;
-			b[1].y += Block.SIZE;
-			b[2].y += Block.SIZE;
-			b[3].y += Block.SIZE;
-			autoDropCounter = 0;
+		if(bottomCollision) {
+			active = false;
 		}
+		else{
+			autoDropCounter++; //sube con cada frame
+			if(autoDropCounter == PlayManager.dropInterval) {
+				//mino va por abajo
+				b[0].y += Block.SIZE;
+				b[1].y += Block.SIZE;
+				b[2].y += Block.SIZE;
+				b[3].y += Block.SIZE;
+				autoDropCounter = 0;
+			}
+		}
+		
 		
 	}
 
 	public void draw(Graphics2D g2) {
-        for (Block block : b) {
-            block.dibujo(g2);
-        }
+        g2.setColor(b[0].c);
+        g2.fillRect(b[0].x, b[0].y, Block.SIZE, Block.SIZE);
+        g2.fillRect(b[1].x, b[1].y, Block.SIZE, Block.SIZE);
+        g2.fillRect(b[2].x, b[2].y, Block.SIZE, Block.SIZE);
+        g2.fillRect(b[3].x, b[3].y, Block.SIZE, Block.SIZE);
 	}
 
 }

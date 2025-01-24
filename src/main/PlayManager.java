@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.util.ArrayList;
 import java.util.Random;
 
 import mino.Block;
@@ -31,6 +32,12 @@ public class PlayManager {
 	final int MINO_START_X;
 	final int MINO_START_Y;
 	
+	Mino nextMino;
+	final int NEXTMINO_X;
+	final int NEXTMINO_Y;
+	public static ArrayList<Block> staticBlocks = new ArrayList<>();
+	
+	//Otras
 	public static int dropInterval = 60;
 	
 	// Constructor del area de juego
@@ -43,8 +50,14 @@ public class PlayManager {
 		MINO_START_X = left_x + (WIDTH/2) - Block.SIZE;
 		MINO_START_Y = top_y + Block.SIZE;
 		
+		NEXTMINO_X = right_x + 175;
+		NEXTMINO_Y = top_y + 500;
+		
+		
 		currentMino = pickMino();
 		currentMino.setXY(MINO_START_X, MINO_START_Y);
+		nextMino = pickMino();
+		nextMino.setXY(NEXTMINO_X, NEXTMINO_Y);
 		
 	}
 	
@@ -89,13 +102,16 @@ public class PlayManager {
 			currentMino.draw(g2);
 		}
 		
+		//nextMino
+		nextMino.draw(g2);
+		
 		// Dibuja la pausa
 		g2.setColor(Color.yellow);
 		g2.setFont(g2.getFont().deriveFont(50f));
 		if(KeyHandler.pausePressed) {
-			x = left_x + 95;
+			x = left_x + 70;
 			y = top_y + 320;
-			g2.drawString("PAUSE", x, y);
+			g2.drawString("PAUSED", x, y);
 		}
 	}
 }
