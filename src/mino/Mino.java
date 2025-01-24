@@ -135,10 +135,10 @@ public class Mino {
 		}
 		if(KeyHandler.leftPressed) {
 			if(leftCollision == false) {
-				b[0].x += Block.SIZE;
-				b[1].x += Block.SIZE;
-				b[2].x += Block.SIZE;
-				b[3].x += Block.SIZE;
+				b[0].x -= Block.SIZE;
+				b[1].x -= Block.SIZE;
+				b[2].x -= Block.SIZE;
+				b[3].x -= Block.SIZE;
 			}
 			
 			KeyHandler.leftPressed = false;
@@ -167,7 +167,9 @@ public class Mino {
 	}
 
 	public void draw(Graphics2D g2) {
-		
+		for(Block block : b) {
+			block.dibujo(g2);
+		}
 	}
 
 }
