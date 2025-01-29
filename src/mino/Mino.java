@@ -14,6 +14,8 @@ public class Mino {
 	public int direction = 1; // Hay 4 direcciones (1, 2, 3 y 4)
 	boolean leftCollision, rightCollision, bottomCollision;
 	public boolean active = true;
+	public boolean deactivating;
+	int deactivateCounter = 0;
 	
 	// 4 directions
 	public void create(Color c) {
@@ -139,6 +141,9 @@ public class Mino {
 	}
 	public void update() {
 
+		if(deactivating) {
+			deactivating();
+		}
 		
 		if(KeyHandler.upPressed) {
 			
@@ -189,7 +194,7 @@ public class Mino {
 			KeyHandler.rightPressed = false;
 		}
 		if(bottomCollision) {
-			active = false;
+			deactivating = true;
 		}
 		else{
 			autoDropCounter++; //sube con cada frame
@@ -204,6 +209,19 @@ public class Mino {
 		}
 		
 		
+	}
+	
+	public void deactivating() {
+		deactivateCounter++;
+		//wait 45 frames until deactivates
+		if(deactivateCounter == 45) {
+			deactivateCounter = 0;
+			checkMovementCollision();
+			
+			if(bottomCollision) {
+				active = false;
+			}
+		}
 	}
 
 	public void draw(Graphics2D g2) {
@@ -221,7 +239,20 @@ public class Mino {
 //			block.dibujo(g2);
 //		}
 		int margin = 2;
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> 304ac8592ed8f4684e5a5b70fb7ab77338faee76
+>>>>>>> a7945ff2a5eafe0ef9c10b783ed13c485e49a8af
+>>>>>>> 3ec7420abc63da1b03e2f2d1f6ba2c00a2dd10d3
+>>>>>>> a89ed5d2a9ab09524df65263c7b737805b348e3a
         g2.setColor(b[0].c);
         g2.fillRect(b[0].x + margin, b[0].y + margin, Block.SIZE - (margin * 2), Block.SIZE - (margin * 2));
         g2.fillRect(b[1].x + margin, b[1].y + margin, Block.SIZE - (margin * 2), Block.SIZE - (margin * 2));
