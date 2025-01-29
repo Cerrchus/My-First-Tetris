@@ -17,6 +17,8 @@ public class GamePanel extends JPanel implements Runnable {
     Thread gameThread;
     PlayManager pm;
     private Image backgroundImage;
+    public static Sound music = new Sound();
+    public static Sound se = new Sound();
 
     public GamePanel() {
         // Configuracion del JPanel
@@ -36,6 +38,9 @@ public class GamePanel extends JPanel implements Runnable {
     public void launchGame() {
         gameThread = new Thread(this);
         gameThread.start();
+        
+        music.play(0, true);
+        music.loop();
     }
 
     @Override
