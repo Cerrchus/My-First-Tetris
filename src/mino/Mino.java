@@ -58,6 +58,8 @@ public class Mino {
 		rightCollision = false;
 		bottomCollision = false;
 		
+		checkStaticBlockCollision();
+		
 		// Comprobamos el choque con el frame
 		// Pared izquierda
 		for(int i = 0; i < b.length; i++) {
@@ -85,6 +87,9 @@ public class Mino {
 		rightCollision = false;
 		bottomCollision = false;
 		
+		//check static collision
+		checkStaticBlockCollision();
+		
 		// Comprobamos el choque con el frame
 		// Pared izquierda
 		for(int i = 0; i < b.length; i++) {
@@ -104,6 +109,31 @@ public class Mino {
 		for(int i = 0; i < b.length; i++) {
 			if(tempB[i].y + Block.SIZE > PlayManager.bottom_y) {
 				bottomCollision = true;
+			}
+		}
+	}
+	private void checkStaticBlockCollision() {
+		for(int i = 0; i < PlayManager.staticBlocks.size(); i++) {
+			int targetX = PlayManager.staticBlocks.get(i).x;
+			int targetY = PlayManager.staticBlocks.get(i).y;
+			
+			//check down
+			for(int ii = 0; ii < b.length; ii++) {
+				if(b[ii].y + Block.SIZE == targetY && b[ii].x == targetX) {
+					bottomCollision = true;
+				}
+			}
+			//check left
+			for(int ii = 0; ii < b.length; ii++) {
+				if(b[ii].x - Block.SIZE == targetX && b[ii].y == targetY) {
+					leftCollision = true;
+				}
+			}
+			//check right
+			for(int ii = 0; ii < b.length; ii++) {
+				if(b[ii].x + Block.SIZE == targetX && b[ii].y == targetY) {
+					rightCollision = true;
+				}
 			}
 		}
 	}
@@ -177,6 +207,7 @@ public class Mino {
 	}
 
 	public void draw(Graphics2D g2) {
+<<<<<<< HEAD
 
 
 //		for(Block block : b) {
@@ -184,11 +215,20 @@ public class Mino {
 //		}
 
 
+=======
+>>>>>>> a7945ff2a5eafe0ef9c10b783ed13c485e49a8af
 
 //		for(Block block : b) {
 //			block.dibujo(g2);
 //		}
 		int margin = 2;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> 304ac8592ed8f4684e5a5b70fb7ab77338faee76
+>>>>>>> a7945ff2a5eafe0ef9c10b783ed13c485e49a8af
         g2.setColor(b[0].c);
         g2.fillRect(b[0].x + margin, b[0].y + margin, Block.SIZE - (margin * 2), Block.SIZE - (margin * 2));
         g2.fillRect(b[1].x + margin, b[1].y + margin, Block.SIZE - (margin * 2), Block.SIZE - (margin * 2));

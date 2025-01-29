@@ -87,14 +87,20 @@ public class PlayManager {
 
 	// Actualiza el siguiente mino
 	public void update() {
+<<<<<<< HEAD
 
+=======
+>>>>>>> a7945ff2a5eafe0ef9c10b783ed13c485e49a8af
 		
 		//Revisa si la partida ha terminado
 		if (currentMino.b[0].x == MINO_START_X && currentMino.b[0].y == MINO_START_Y) {
 			gameOver = true;
 		}
 		currentMino.update();
+<<<<<<< HEAD
 
+=======
+>>>>>>> a7945ff2a5eafe0ef9c10b783ed13c485e49a8af
 		if(currentMino.active == false) {
 			staticBlocks.add(currentMino.b[0]);
 			staticBlocks.add(currentMino.b[1]);
@@ -108,7 +114,10 @@ public class PlayManager {
 		} else {
 			currentMino.update();
 		}
+<<<<<<< HEAD
 
+=======
+>>>>>>> a7945ff2a5eafe0ef9c10b783ed13c485e49a8af
 	}
 	
 	public void draw(Graphics2D g2) {
@@ -141,7 +150,15 @@ public class PlayManager {
 		//nextMino
 		nextMino.draw(g2);
 		
+<<<<<<< HEAD
 		// Dibuja la pausa y el Game over
+=======
+		for(int i = 0; i < staticBlocks.size(); i++) {
+			staticBlocks.get(i).draw(g2);
+		}
+		
+		// Dibuja la pausa
+>>>>>>> a7945ff2a5eafe0ef9c10b783ed13c485e49a8af
 		g2.setColor(Color.white);
 		g2.setFont(g2.getFont().deriveFont(50f));
 		if (gameOver) {
