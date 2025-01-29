@@ -28,6 +28,7 @@ public class PlayManager {
     public static int top_y;
     public static int bottom_y;
 
+<<<<<<< HEAD
     Mino currentMino;
     final int MINO_START_X;
     final int MINO_START_Y;
@@ -45,6 +46,128 @@ public class PlayManager {
     int level = 1;
     int lines;
     int score;
+=======
+	// Actualiza el siguiente mino
+	public void update() {
+		
+		//Revisa si la partida ha terminado
+		if (currentMino.b[0].x == MINO_START_X && currentMino.b[0].y == MINO_START_Y) {
+			gameOver = true;
+		}
+		currentMino.update();
+
+		if(currentMino.active == false) {
+			staticBlocks.add(currentMino.b[0]);
+			staticBlocks.add(currentMino.b[1]);
+			staticBlocks.add(currentMino.b[2]);
+			staticBlocks.add(currentMino.b[3]);
+			
+			currentMino.deactivating = false;
+			
+			currentMino = nextMino;
+			currentMino.setXY(MINO_START_X, MINO_START_Y);
+			nextMino = pickMino();
+			nextMino.setXY(NEXTMINO_X, NEXTMINO_Y);
+			
+			checkDelete();
+		} else {
+			currentMino.update();
+		}
+
+	}
+	
+	public void checkDelete() {
+		int x = left_x;
+		int y = top_y;
+		int blockCount = 0;
+		while(x < right_x && y < bottom_y) {
+			for(int i = 0; i < staticBlocks.size(); i++) {
+				if(staticBlocks.get(i).x == x && staticBlocks.get(i).y == y) {
+					blockCount++;
+				}
+			}
+			x += Block.SIZE;
+			if(x == right_x) {
+				
+				if(blockCount == 12) {
+					for(int i = staticBlocks.size()-1; i > -1; i--) {
+						// delete em
+						if(staticBlocks.get(i).y == y) {
+							staticBlocks.remove(i);
+						}
+					}
+					for(int i = 0; i < staticBlocks.size(); i++) {
+						// move em down
+						if(staticBlocks.get(i).y < y) {
+							staticBlocks.get(i).y += Block.SIZE;
+						}
+					}
+				}
+				
+				blockCount = 0;
+				x = left_x;
+				y += Block.SIZE;
+			}
+		}
+	}
+	
+	public void draw(Graphics2D g2) {
+		// Dibuja el rectangulo donde se juega
+		g2.setColor(Color.white);
+		g2.setStroke(new BasicStroke(4f));
+		g2.drawRect(left_x-4, top_y-4, WIDTH+8, HEIGHT+8);
+		
+		// Dibuja el siguiente mino
+		int x = right_x + 100;
+		int y = bottom_y - 200;
+		g2.drawRect(x, y, 280, 200);
+		g2.setFont(new Font("Arial", Font.PLAIN, 30));
+		g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+		g2.drawString("SIGUIENTE", x+60, y+60);
+		
+		// Dibuja el mino actual 
+		if(currentMino != null) {
+			currentMino.draw(g2);
+		}
+		
+		//Dibuja el nivel
+		
+		g2.drawRect(x, top_y, 250, 300);
+		x +=40;
+		y = top_y + 90;
+		g2.drawString("NIVELES: " + level, x, y); y+= 70;
+		g2.drawString("LINEA: " + level, x, y); y+= 70;
+		g2.drawString("MARCADOR: " + level, x, y);
+		//nextMino
+		nextMino.draw(g2);
+
+		for(int i = 0; i < staticBlocks.size(); i++) {
+			staticBlocks.get(i).draw(g2);
+		}
+		
+		// Dibuja la pausa
+		g2.setColor(Color.white);
+		g2.setFont(g2.getFont().deriveFont(50f));
+		if (gameOver) {
+			x = left_x + 25;
+			y = top_y + 320;
+			g2.drawString("GAME OVER :(", x, y);
+		}
+		if(KeyHandler.pausePressed) {
+			x = left_x + 70;
+			y = top_y + 320;
+			g2.drawString("PAUSED", x, y);
+		}
+		
+		//Titulo de Tetris
+		x = 35;
+		y = top_y + 320;
+		g2.setColor(Color.white);
+		g2.setFont(new Font ("Times New Roman", Font.ITALIC, 60));
+		g2.drawString("TETRIS ", x+20, y);
+	}
+}
+>>>>>>> 06d2842e7ab11555a8ab99423a9c55e3df73574a
 
     // Constructor del área de juego
     public PlayManager() {
