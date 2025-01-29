@@ -41,6 +41,11 @@ public class PlayManager {
 	public static int dropInterval = 60;
 	boolean gameOver;
 	
+	//Niveles
+	int level = 1;
+	int lines;
+	int score;
+	
 	
 	// Constructor del area de juego
 	public PlayManager() {
@@ -82,12 +87,20 @@ public class PlayManager {
 
 	// Actualiza el siguiente mino
 	public void update() {
+<<<<<<< HEAD
+
+=======
+>>>>>>> a7945ff2a5eafe0ef9c10b783ed13c485e49a8af
 		
 		//Revisa si la partida ha terminado
 		if (currentMino.b[0].x == MINO_START_X && currentMino.b[0].y == MINO_START_Y) {
 			gameOver = true;
 		}
 		currentMino.update();
+<<<<<<< HEAD
+
+=======
+>>>>>>> a7945ff2a5eafe0ef9c10b783ed13c485e49a8af
 		if(currentMino.active == false) {
 			staticBlocks.add(currentMino.b[0]);
 			staticBlocks.add(currentMino.b[1]);
@@ -105,6 +118,10 @@ public class PlayManager {
 		} else {
 			currentMino.update();
 		}
+<<<<<<< HEAD
+
+=======
+>>>>>>> a7945ff2a5eafe0ef9c10b783ed13c485e49a8af
 	}
 	
 	public void checkDelete() {
@@ -161,14 +178,26 @@ public class PlayManager {
 			currentMino.draw(g2);
 		}
 		
+		//Dibuja el nivel
+		
+		g2.drawRect(x, top_y, 250, 300);
+		x +=40;
+		y = top_y + 90;
+		g2.drawString("NIVELES: " + level, x, y); y+= 70;
+		g2.drawString("LINEA: " + level, x, y); y+= 70;
+		g2.drawString("MARCADOR: " + level, x, y);
 		//nextMino
 		nextMino.draw(g2);
 		
+<<<<<<< HEAD
+		// Dibuja la pausa y el Game over
+=======
 		for(int i = 0; i < staticBlocks.size(); i++) {
 			staticBlocks.get(i).draw(g2);
 		}
 		
 		// Dibuja la pausa
+>>>>>>> a7945ff2a5eafe0ef9c10b783ed13c485e49a8af
 		g2.setColor(Color.white);
 		g2.setFont(g2.getFont().deriveFont(50f));
 		if (gameOver) {
@@ -182,11 +211,12 @@ public class PlayManager {
 			g2.drawString("PAUSED", x, y);
 		}
 		
+		//Titulo de Tetris
 		x = 35;
 		y = top_y + 320;
 		g2.setColor(Color.white);
 		g2.setFont(new Font ("Times New Roman", Font.ITALIC, 60));
-		g2.drawString("Tetris :(", x, y);
+		g2.drawString("TETRIS ", x+20, y);
 	}
 }
 
