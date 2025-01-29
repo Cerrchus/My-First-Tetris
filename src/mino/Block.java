@@ -14,7 +14,7 @@ public class Block extends Rectangle {
 		this.c = c;
 	}
 	
-	public void dibujo(Graphics2D g2) {
+	public void draw(Graphics2D g2) {
 		g2.setColor(c);
 		g2.fillRect(x,y, SIZE, SIZE);
 	}

@@ -117,6 +117,10 @@ public class PlayManager {
 		//nextMino
 		nextMino.draw(g2);
 		
+		for(int i = 0; i < staticBlocks.size(); i++) {
+			staticBlocks.get(i).draw(g2);
+		}
+		
 		// Dibuja la pausa
 		g2.setColor(Color.white);
 		g2.setFont(g2.getFont().deriveFont(50f));
