@@ -80,7 +80,19 @@ public class PlayManager {
 
 	// Actualiza el siguiente mino
 	public void update() {
-		currentMino.update();
+		if(currentMino.active == false) {
+			staticBlocks.add(currentMino.b[0]);
+			staticBlocks.add(currentMino.b[1]);
+			staticBlocks.add(currentMino.b[2]);
+			staticBlocks.add(currentMino.b[3]);
+			
+			currentMino = nextMino;
+			currentMino.setXY(MINO_START_X, MINO_START_Y);
+			nextMino = pickMino();
+			nextMino.setXY(NEXTMINO_X, NEXTMINO_Y);
+		} else {
+			currentMino.update();
+		}
 	}
 	
 	public void draw(Graphics2D g2) {

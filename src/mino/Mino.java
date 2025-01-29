@@ -177,11 +177,19 @@ public class Mino {
 	}
 
 	public void draw(Graphics2D g2) {
+<<<<<<< HEAD
+//
+//		for(Block block : b) {
+//			block.dibujo(g2);
+//		}
+
+=======
 
 //		for(Block block : b) {
 //			block.dibujo(g2);
 //		}
 		int margin = 2;
+>>>>>>> dc8242e9aaa83e2c8e23999891763e2021cf1322
         g2.setColor(b[0].c);
         g2.fillRect(b[0].x + margin, b[0].y + margin, Block.SIZE - (margin * 2), Block.SIZE - (margin * 2));
         g2.fillRect(b[1].x + margin, b[1].y + margin, Block.SIZE - (margin * 2), Block.SIZE - (margin * 2));
