@@ -82,12 +82,28 @@ public class PlayManager {
 
 	// Actualiza el siguiente mino
 	public void update() {
+<<<<<<< HEAD
 		
 		//Revisa si la partida ha terminado
 		if (currentMino.b[0].x == MINO_START_X && currentMino.b[0].y == MINO_START_Y) {
 			gameOver = true;
 		}
 		currentMino.update();
+=======
+		if(currentMino.active == false) {
+			staticBlocks.add(currentMino.b[0]);
+			staticBlocks.add(currentMino.b[1]);
+			staticBlocks.add(currentMino.b[2]);
+			staticBlocks.add(currentMino.b[3]);
+			
+			currentMino = nextMino;
+			currentMino.setXY(MINO_START_X, MINO_START_Y);
+			nextMino = pickMino();
+			nextMino.setXY(NEXTMINO_X, NEXTMINO_Y);
+		} else {
+			currentMino.update();
+		}
+>>>>>>> c49bcc98f49f096bee8c79894b1f2336f4deb2a6
 	}
 	
 	public void draw(Graphics2D g2) {
