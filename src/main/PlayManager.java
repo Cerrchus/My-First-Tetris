@@ -39,6 +39,8 @@ public class PlayManager {
 	
 	//Otras
 	public static int dropInterval = 60;
+	boolean gameOver;
+	
 	
 	// Constructor del area de juego
 	public PlayManager() {
@@ -80,6 +82,14 @@ public class PlayManager {
 
 	// Actualiza el siguiente mino
 	public void update() {
+<<<<<<< HEAD
+		
+		//Revisa si la partida ha terminado
+		if (currentMino.b[0].x == MINO_START_X && currentMino.b[0].y == MINO_START_Y) {
+			gameOver = true;
+		}
+		currentMino.update();
+=======
 		if(currentMino.active == false) {
 			staticBlocks.add(currentMino.b[0]);
 			staticBlocks.add(currentMino.b[1]);
@@ -93,6 +103,7 @@ public class PlayManager {
 		} else {
 			currentMino.update();
 		}
+>>>>>>> c49bcc98f49f096bee8c79894b1f2336f4deb2a6
 	}
 	
 	public void draw(Graphics2D g2) {
@@ -124,11 +135,22 @@ public class PlayManager {
 		// Dibuja la pausa
 		g2.setColor(Color.white);
 		g2.setFont(g2.getFont().deriveFont(50f));
+		if (gameOver) {
+			x = left_x + 25;
+			y = top_y + 320;
+			g2.drawString("GAME OVER :(", x, y);
+		}
 		if(KeyHandler.pausePressed) {
 			x = left_x + 70;
 			y = top_y + 320;
 			g2.drawString("PAUSED", x, y);
 		}
+		
+		x = 35;
+		y = top_y + 320;
+		g2.setColor(Color.white);
+		g2.setFont(new Font ("Times New Roman", Font.ITALIC, 60));
+		g2.drawString("Tetris :(", x, y);
 	}
 }
 
