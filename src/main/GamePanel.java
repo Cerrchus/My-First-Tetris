@@ -24,7 +24,7 @@ public class GamePanel extends JPanel implements Runnable {
         this.setLayout(null);
 
         // Cargar la imagen de fondo
-        backgroundImage = new ImageIcon(GamePanel.class.getResource("/images/imgFondo2.png")).getImage();
+        backgroundImage = new ImageIcon(GamePanel.class.getResource("/images/imgFondo.png")).getImage();
 
         // Implements KeyListener
         this.addKeyListener(new KeyHandler());
