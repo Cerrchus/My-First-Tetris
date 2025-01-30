@@ -2,10 +2,46 @@ package mino;
 
 import java.awt.*;
 
+<<<<<<< HEAD
 public class Mino_Z1 extends  Mino{
 
     public Mino_Z1(){
         create(Color.RED);
+=======
+public class Mino_Z1 extends Mino {
+	public Mino_Z1() {
+		create(Color.red);
+	}
+	
+	public void setXY(int x, int y) {
+		//   ○  
+        // ○ ○ 
+		// ○
+        b[0].x = x;
+        b[0].y = y;
+        b[1].x = b[0].x;
+        b[1].y = b[0].y - Block.SIZE;
+        b[2].x = b[0].x - Block.SIZE;
+        b[2].y = b[0].y;
+        b[3].x = b[0].x - Block.SIZE;
+        b[3].y = b[0].y + Block.SIZE;
+	}
+	
+	public void getDirection1() {
+		//   ○  
+        // ○ ○ 
+		// ○
+        temB[0].x = b[0].x;
+        b[0].y = b[0].y;
+        b[1].x = b[0].x;
+        b[1].y = b[0].y - Block.SIZE;
+        b[2].x = b[0].x - Block.SIZE;
+        b[2].y = b[0].y;
+        b[3].x = b[0].x - Block.SIZE;
+        b[3].y = b[0].y + Block.SIZE;
+    	
+    	updateXY(1); 
+>>>>>>> 76f017734bfce20ee2f9c764ae6c4c7ae2ca3742
     }
 
     public void setXY(int x , int y){
