@@ -74,6 +74,7 @@ public class PlayManager {
 	// Actualiza el siguiente mino
 	public void update() {
 		
+		
 
 		if(currentMino.active == false) {
 			staticBlocks.add(currentMino.b[0]);
@@ -84,6 +85,8 @@ public class PlayManager {
 			//Revisa si la partida ha terminado
 			if (currentMino.b[0].x == MINO_START_X && currentMino.b[0].y == MINO_START_Y) {
 				gameOver = true;
+
+				currentMino.update();
 			}
 			
 			currentMino.deactivating = false;
