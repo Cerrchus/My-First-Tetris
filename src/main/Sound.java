@@ -12,6 +12,7 @@ public class Sound {
 
     public Sound(){
         url[0]= getClass().getResource("white-labyrinth-active.wav");
+//        url[0]= getClass().getResource("Tetris.wav");
         url[1]= getClass().getResource("delete line.wav");
         url[2]= getClass().getResource("gameover.wav");
         url[3]= getClass().getResource("rotation.wav");
