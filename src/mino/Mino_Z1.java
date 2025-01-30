@@ -25,7 +25,7 @@ public class Mino_Z1 extends Mino {
 		//   ○  
         // ○ ○ 
 		// ○
-        b[0].x = b[0].x;
+        temB[0].x = b[0].x;
         b[0].y = b[0].y;
         b[1].x = b[0].x;
         b[1].y = b[0].y - Block.SIZE;
