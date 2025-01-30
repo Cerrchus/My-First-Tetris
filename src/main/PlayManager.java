@@ -86,7 +86,7 @@ public class PlayManager {
 			if (currentMino.b[0].x == MINO_START_X && currentMino.b[0].y == MINO_START_Y) {
 				gameOver = true;
 
-				currentMino.update();
+				//currentMino.update();
 			}
 			
 			currentMino.deactivating = false;
@@ -107,6 +107,7 @@ public class PlayManager {
 		int x = left_x;
 		int y = top_y;
 		int blockCount = 0;
+		int lineCount = 0;
 		while(x < right_x && y < bottom_y) {
 			for(int i = 0; i < staticBlocks.size(); i++) {
 				if(staticBlocks.get(i).x == x && staticBlocks.get(i).y == y) {
@@ -128,6 +129,22 @@ public class PlayManager {
 							staticBlocks.remove(i);
 						}
 					}
+					
+					lineCount++;
+					lines++;
+					//drop speed
+					// if the line score hits a certain number, increases the drop speed
+					// 1 is fastest
+					if(lines % 10 == 10 && dropInterval > 1) {
+						level++;
+						if(dropInterval > 10) {
+							dropInterval -= 10;
+						}
+						else {
+							dropInterval -= 1;
+						}
+					}
+					
 					for(int i = 0; i < staticBlocks.size(); i++) {
 						// move em down
 						if(staticBlocks.get(i).y < y) {
@@ -141,6 +158,13 @@ public class PlayManager {
 				y += Block.SIZE;
 			}
 		}
+		
+		//add score
+		if(lineCount > 0) {
+			int singleLineScore = 10 * level;
+			score += singleLineScore * lineCount;
+		}
+		
 	}
 	
 	public void draw(Graphics2D g2) {
@@ -162,14 +186,14 @@ public class PlayManager {
 			currentMino.draw(g2);
 		}
 		
-		//Dibuja el nivel
+		//draw the score
 		
 		g2.drawRect(x, top_y, 250, 300);
 		x +=40;
 		y = top_y + 90;
 		g2.drawString("NIVELES: " + level, x, y); y+= 70;
-		g2.drawString("LINEA: " + level, x, y); y+= 70;
-		g2.drawString("MARCADOR: " + level, x, y);
+		g2.drawString("LINEA: " + lines, x, y); y+= 70;
+		g2.drawString("MARCADOR: " + score, x, y);
 		//nextMino
 		nextMino.draw(g2);
 
