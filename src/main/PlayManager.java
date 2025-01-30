@@ -187,7 +187,7 @@ public class PlayManager {
 		}
 		
 		//draw the score
-		
+		g2.setColor(Color.white);
 		g2.drawRect(x, top_y, 250, 300);
 		x +=40;
 		y = top_y + 90;
