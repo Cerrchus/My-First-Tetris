@@ -39,7 +39,7 @@ public class PlayManager {
 
     // Otras
     public static int dropInterval = 60;
-    boolean gameOver = false;
+    public boolean gameOver;
     
     //Effects
     boolean effectCounterOn;
@@ -74,17 +74,17 @@ public class PlayManager {
 	// Actualiza el siguiente mino
 	public void update() {
 		
-		//Revisa si la partida ha terminado
-		if (currentMino.b[0].x == MINO_START_X && currentMino.b[0].y == MINO_START_Y) {
-			gameOver = true;
-		}
-		currentMino.update();
 
 		if(currentMino.active == false) {
 			staticBlocks.add(currentMino.b[0]);
 			staticBlocks.add(currentMino.b[1]);
 			staticBlocks.add(currentMino.b[2]);
 			staticBlocks.add(currentMino.b[3]);
+			
+			//Revisa si la partida ha terminado
+			if (currentMino.b[0].x == MINO_START_X && currentMino.b[0].y == MINO_START_Y) {
+				gameOver = true;
+			}
 			
 			currentMino.deactivating = false;
 			
